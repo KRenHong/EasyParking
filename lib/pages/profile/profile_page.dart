@@ -1,7 +1,9 @@
+import 'package:easyparking/routes/route_helper.dart';
 import 'package:easyparking/utils/app_constant.dart';
 import 'package:easyparking/utils/app_text_style.dart';
 import 'package:easyparking/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/dimensions.dart';
 
@@ -72,6 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(height: Dimensions.height20 * 3,),
             Column(
               children: [
+                //Edit profile
                 Row(
                   children: [
                     Icon(
@@ -92,6 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
                 SizedBox(height: Dimensions.height30,),
+                //Payment
                 Row(
                   children: [
                     Icon(
@@ -112,26 +116,33 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
                 SizedBox(height: Dimensions.height30,),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.car_rental, 
-                      size: Dimensions.iconSize24, 
-                      color: AppColors.paleGrey,
-                    ),
-                    SizedBox(width: Dimensions.width20,),
-                    Text(
-                      "Registered Vehicle",
-                      style: TextStyle(
-                        fontSize: Dimensions.fontSize18, 
-                        fontWeight: FontWeight.w500, 
-                        height: 1.16,
-                        fontFamily: 'Jost'
+                //egistered Vehicle
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getRegisteredVehiclePage());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.car_rental, 
+                        size: Dimensions.iconSize24, 
+                        color: AppColors.paleGrey,
                       ),
-                    )
-                  ],
+                      SizedBox(width: Dimensions.width20,),
+                      Text(
+                        "Registered Vehicle",
+                        style: TextStyle(
+                          fontSize: Dimensions.fontSize18, 
+                          fontWeight: FontWeight.w500, 
+                          height: 1.16,
+                          fontFamily: 'Jost'
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: Dimensions.height30,),
+                //Logout
                 Row(
                   children: [
                     Icon(
