@@ -1,5 +1,5 @@
 import 'package:easyparking/pages/navigation/navigation_page.dart';
-import 'package:easyparking/pages/payment/payment_page.dart';
+import 'package:easyparking/pages/payment/history_page.dart';
 import 'package:easyparking/pages/record/records_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     const NavigationPage(),
     const RecordPage(),
-    const PaymentPage(),
+    const HistoryPage(),
     const ProfilePage()
   ];
 

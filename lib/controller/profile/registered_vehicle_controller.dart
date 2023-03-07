@@ -1,9 +1,9 @@
-import 'package:easyparking/controller/add_vehicle_controller.dart';
+import 'package:easyparking/controller/profile/add_vehicle_controller.dart';
 import 'package:easyparking/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/vehicle.dart';
+import '../../models/vehicle.dart';
 
 class RegisteredVehicleController extends GetxController implements GetxService{
   final SharedPreferences sharedPreferences;

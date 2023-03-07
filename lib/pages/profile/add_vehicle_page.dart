@@ -1,4 +1,4 @@
-import 'package:easyparking/controller/add_vehicle_controller.dart';
+import 'package:easyparking/controller/profile/add_vehicle_controller.dart';
 import 'package:easyparking/models/vehicle.dart';
 import 'package:easyparking/utils/colors.dart';
 import 'package:flutter/material.dart';
