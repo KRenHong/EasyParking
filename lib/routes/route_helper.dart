@@ -1,5 +1,6 @@
 import 'package:easyparking/pages/home/home_page.dart';
 import 'package:easyparking/pages/payment/payment_page.dart';
+import 'package:easyparking/pages/profile/add_vehicle_page.dart';
 import 'package:easyparking/pages/profile/registered_vehicle_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -10,11 +11,13 @@ class RouteHelper{
   static const String paymentPage = "/payment-page";
   static const String profilePage = "/profile-page";
   static const String registeredVehiclePage = "/registered-vehicle-page";
+  static const String addVehiclePage = "/add-vehicle-page";
 
   static getHomePage() => homePage;
   static getPaymentPage() => paymentPage;
   static getProfilePage() => profilePage;
   static getRegisteredVehiclePage() => registeredVehiclePage;
+  static getAddVehiclePage() => addVehiclePage;
 
   static List<GetPage> routes = [
     //Profile page route
@@ -22,6 +25,9 @@ class RouteHelper{
     
     //Registered vehicle page route
     GetPage(name: registeredVehiclePage, page: () => const RegisteredVehiclePage()),
+
+    //Add vehicle page route
+    GetPage(name: addVehiclePage, page: () => const AddVehiclePage()),
 
     //Payment page route
     GetPage(name: paymentPage, page: () => const PaymentPage()),
