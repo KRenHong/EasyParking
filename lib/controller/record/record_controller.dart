@@ -24,7 +24,7 @@ class RecordController extends GetxController implements GetxService{
         element.setStatus(false);
         tempDoneList.add(element);
       }
-      _doneList = tempDoneList;
+      _doneList = tempDoneList.reversed.toList();
       return element.place == parkingRecord.place;
     });
     update();
