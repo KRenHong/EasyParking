@@ -1,20 +1,28 @@
+import 'package:easyparking/models/payment.dart';
+import 'package:easyparking/models/payment_record.dart';
 import 'package:easyparking/pages/home/home_page.dart';
+import 'package:easyparking/pages/payment/history_page.dart';
 import 'package:easyparking/pages/payment/payment_page.dart';
+import 'package:easyparking/pages/payment/summary_page.dart';
 import 'package:easyparking/pages/profile/add_vehicle_page.dart';
 import 'package:easyparking/pages/profile/registered_vehicle_page.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 
 import '../pages/profile/profile_page.dart';
 
 class RouteHelper{
   static const String homePage = "/home-page";
+  static const String historyPage = "/history-page";
+  static const String summaryPage = "/summary-page";
   static const String paymentPage = "/payment-page";
   static const String profilePage = "/profile-page";
   static const String registeredVehiclePage = "/registered-vehicle-page";
   static const String addVehiclePage = "/add-vehicle-page";
 
   static getHomePage() => homePage;
-  static getPaymentPage() => paymentPage;
+  static getHistoryPage() => historyPage;
+  static getSummaryPage(String payment) => '$summaryPage?payment=$payment';
+  static getPaymentPage(String payment) => '$paymentPage?payment=$payment';
   static getProfilePage() => profilePage;
   static getRegisteredVehiclePage() => registeredVehiclePage;
   static getAddVehiclePage() => addVehiclePage;
@@ -29,8 +37,22 @@ class RouteHelper{
     //Add vehicle page route
     GetPage(name: addVehiclePage, page: () => const AddVehiclePage()),
 
+    //History page route
+    GetPage(name: historyPage, page: () => const HistoryPage()),
+
     //Payment page route
-    GetPage(name: paymentPage, page: () => const PaymentPage()),
+    GetPage(name: paymentPage, page: () {
+      PaymentRecord paymentRecord = Get.arguments;
+      Payment payment = Payment.decode(Get.parameters['payment']!);
+      return PaymentPage(paymentRecord: paymentRecord, payment: payment,);
+    }),
+
+    //Summary page route
+    GetPage(name: summaryPage, page: () {
+      PaymentRecord paymentRecord = Get.arguments;
+      Payment payment = Payment.decode(Get.parameters['payment']!);
+      return SummaryPage(paymentRecord: paymentRecord, payment: payment,);
+    }),
 
     //Home page route
     GetPage(name: homePage, page: () => const HomePage()),

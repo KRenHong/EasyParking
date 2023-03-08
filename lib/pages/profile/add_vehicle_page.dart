@@ -1,4 +1,4 @@
-import 'package:easyparking/controller/add_vehicle_controller.dart';
+import 'package:easyparking/controller/profile/add_vehicle_controller.dart';
 import 'package:easyparking/models/vehicle.dart';
 import 'package:easyparking/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class AddVehiclePage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TextField(
-                      showCursor: false,
+                      showCursor: true,
                       controller: vehicleNumberController,
                       decoration: const InputDecoration.collapsed(
                         hintText: "EX. HGE 5295"
@@ -111,7 +111,7 @@ class AddVehiclePage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TextField(
-                      showCursor: false,
+                      showCursor: true,
                       controller: descController,
                       decoration: const InputDecoration.collapsed(
                         hintText: "EX. HILUX"
