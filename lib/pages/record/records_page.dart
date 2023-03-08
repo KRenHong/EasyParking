@@ -104,7 +104,6 @@ class _RecordPageState extends State<RecordPage> with TickerProviderStateMixin{
                   GetBuilder<RecordController>(builder: (recordController) {
                     var doneList = recordController.doneList;
                     return doneList.length > 0? Container(
-                      margin: EdgeInsets.only(top: Dimensions.height20),
                       child: Column(
                         children: [
                           Wrap(
