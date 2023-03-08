@@ -36,6 +36,7 @@ class _RegisteredVehiclePageState extends State<RegisteredVehiclePage> {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
@@ -142,14 +143,16 @@ class _RegisteredVehiclePageState extends State<RegisteredVehiclePage> {
                       ],
                     )
                   )
-                ): Center(
-                  child: Container(
-                    height: Dimensions.height20 * 10,
-                    width: Dimensions.width20 * 10,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(AppConstant.EMPTY_IMG)
-                      )
+                ): Expanded(
+                  child: Center(
+                    child: Container(
+                      height: Dimensions.height20 * 15,
+                      width: Dimensions.width20 * 15,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(AppConstant.EMPTY_IMG)
+                        )
+                      ),
                     ),
                   ),
                 );

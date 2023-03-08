@@ -2,6 +2,7 @@ import 'package:easyparking/controller/payment/history_controller.dart';
 import 'package:easyparking/controller/payment/payment_controller.dart';
 import 'package:easyparking/controller/profile/add_vehicle_controller.dart';
 import 'package:easyparking/controller/profile/registered_vehicle_controller.dart';
+import 'package:easyparking/controller/record/record_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,4 +21,7 @@ Future<void> init() async {
 
   //Payment controller
   Get.lazyPut(() => PaymentController());
+
+  //Record controller
+  Get.lazyPut(() => RecordController());
 }

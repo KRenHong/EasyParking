@@ -1,3 +1,4 @@
+import 'package:easyparking/models/parking_record.dart';
 import 'package:easyparking/models/payment.dart';
 import 'package:easyparking/models/payment_record.dart';
 import 'package:easyparking/pages/home/home_page.dart';
@@ -6,6 +7,7 @@ import 'package:easyparking/pages/payment/payment_page.dart';
 import 'package:easyparking/pages/payment/summary_page.dart';
 import 'package:easyparking/pages/profile/add_vehicle_page.dart';
 import 'package:easyparking/pages/profile/registered_vehicle_page.dart';
+import 'package:easyparking/pages/record/ongoing_page.dart';
 import 'package:get/get.dart';
 
 import '../pages/profile/profile_page.dart';
@@ -18,6 +20,7 @@ class RouteHelper{
   static const String profilePage = "/profile-page";
   static const String registeredVehiclePage = "/registered-vehicle-page";
   static const String addVehiclePage = "/add-vehicle-page";
+  static const String ongoingPage = "/ongoing-page";
 
   static getHomePage() => homePage;
   static getHistoryPage() => historyPage;
@@ -26,6 +29,7 @@ class RouteHelper{
   static getProfilePage() => profilePage;
   static getRegisteredVehiclePage() => registeredVehiclePage;
   static getAddVehiclePage() => addVehiclePage;
+  static getOngoingPage() => ongoingPage;
 
   static List<GetPage> routes = [
     //Profile page route
@@ -52,6 +56,11 @@ class RouteHelper{
       PaymentRecord paymentRecord = Get.arguments;
       Payment payment = Payment.decode(Get.parameters['payment']!);
       return SummaryPage(paymentRecord: paymentRecord, payment: payment,);
+    }),
+
+    GetPage(name: ongoingPage, page: () {
+      ParkingRecord parkingRecord = Get.arguments;
+      return OngoingPage(parkingRecord: parkingRecord);
     }),
 
     //Home page route
