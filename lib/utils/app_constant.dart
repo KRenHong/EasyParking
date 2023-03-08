@@ -1,4 +1,5 @@
 import 'package:easyparking/models/payment.dart';
+import 'package:easyparking/models/payment_record.dart';
 
 class AppConstant{
   static const String MENU_ICON = "assets/image/menu_icon.jpg";
@@ -34,6 +35,14 @@ class AppConstant{
     Payment(image: TNG_LOGO, title: "Touch’n GO", selected: false),
     Payment(image: APPLE_LOGO, title: "Apple Pay", selected: false),
     Payment(image: VISA_LOGO, title: "****  ****  ****  ****  7890", selected: false)
+  ];
+
+  static List<PaymentRecord> paymentRecordList = [
+    PaymentRecord(logo: SUNWAY_LOGO, title: "Sunway Parking", price: "MYR 8.00"),
+    PaymentRecord(logo: MBPJ_LOGO, title: "Petaling Jaya", price: "MYR 8.00"),
+    PaymentRecord(logo: MBSJ_LOGO, title: "Subang Jaya", price: "MYR 8.00"),
+    PaymentRecord(logo: ONE_U_LOGO, title: "One Utama", price: "MYR 8.00"),
+    PaymentRecord(logo: MBPP_LOGO, title: "Pulau Pinang", price: "MYR 8.00")
   ];
 
   static const String VEHICLE = "vehicle";

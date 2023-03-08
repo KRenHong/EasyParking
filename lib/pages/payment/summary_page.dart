@@ -1,5 +1,8 @@
 
+import 'package:easyparking/controller/payment/history_controller.dart';
+import 'package:easyparking/models/payment_record.dart';
 import 'package:easyparking/routes/route_helper.dart';
+import 'package:easyparking/utils/app_constant.dart';
 import 'package:easyparking/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,11 +11,13 @@ import '../../models/payment.dart';
 import '../../utils/dimensions.dart';
 
 class SummaryPage extends StatelessWidget {
+  final PaymentRecord paymentRecord;
   final Payment payment;
-  const SummaryPage({super.key, required this.payment});
+  const SummaryPage({super.key, required this.paymentRecord, required this.payment});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -358,7 +363,10 @@ class SummaryPage extends StatelessWidget {
                     ],
                   ),
                   InkWell(
-                    onTap: () => Get.toNamed(RouteHelper.getPaymentPage()),
+                    onTap: () => Get.offNamed(
+                      RouteHelper.getPaymentPage(Payment.encode(payment)),
+                      arguments: paymentRecord
+                    ),
                     child: Text(
                       "Change", 
                       style: TextStyle(
@@ -380,6 +388,7 @@ class SummaryPage extends StatelessWidget {
         margin: EdgeInsets.all(Dimensions.height30),
         child: InkWell(
           onTap: () {
+            Get.find<HistoryController>().paid(paymentRecord);
             Get.back();
           },
           child: Container(

@@ -71,7 +71,7 @@ class AddVehiclePage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TextField(
-                      showCursor: false,
+                      showCursor: true,
                       controller: vehicleNumberController,
                       decoration: const InputDecoration.collapsed(
                         hintText: "EX. HGE 5295"
@@ -111,7 +111,7 @@ class AddVehiclePage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TextField(
-                      showCursor: false,
+                      showCursor: true,
                       controller: descController,
                       decoration: const InputDecoration.collapsed(
                         hintText: "EX. HILUX"

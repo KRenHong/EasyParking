@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 class PaymentController extends GetxController implements GetxService{
   PaymentController();
 
-  late Payment _payment;
-  Payment get payment => _payment;
+  String _payment = "****  ****  ****  ****  7890";
+  String get payment => _payment;
 
-  void setPaymentType(Payment payment) {
+  void setPaymentType(String payment) {
     _payment = payment;
     update();
   }

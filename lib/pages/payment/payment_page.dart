@@ -1,3 +1,5 @@
+import 'package:easyparking/controller/payment/payment_controller.dart';
+import 'package:easyparking/models/payment_record.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,29 +10,34 @@ import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
+  final PaymentRecord paymentRecord;
+  Payment payment;
+  PaymentPage({super.key, required this.paymentRecord, required this.payment});
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-  Payment selectedPayment = AppConstant.paymentList[0];
+  String title = Get.find<PaymentController>().payment;
 
   Payment getPayment(String value) {
     for(Payment item in AppConstant.paymentList) {
       if(item.title == value) {
-        selectedPayment = item;
+        widget.payment = item;
         break;
       }
     }
-    return selectedPayment;
+    return widget.payment;
   }
 
+  void setPaymentType(Payment payment) {
+    Get.find<PaymentController>().setPaymentType(payment.title);
+  }
 
   @override
   Widget build(BuildContext context) {
-    String title = "Google Pay";
+    
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -81,61 +88,69 @@ class _PaymentPageState extends State<PaymentPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Wrap(
-                  children: List.generate(AppConstant.paymentList.length, (index) {
-                    var paymentList = AppConstant.paymentList;
-                    var payment = paymentList[index];
-                    return Container(
-                      width: double.maxFinite,
-                      height: Dimensions.height10 * 9,
-                      margin: EdgeInsets.only(bottom: Dimensions.height20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius20),
-                        color: const Color(0xFFF4F4F4),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Container(
-                            height: Dimensions.height45,
-                            width: Dimensions.height45,
+                GetBuilder<PaymentController>(builder: (paymentController){
+                  title = Get.find<PaymentController>().payment;
+                  print(title);
+                  return  Wrap(
+                      children: List.generate(AppConstant.paymentList.length, (index) {
+                        var paymentList = AppConstant.paymentList;
+                        var payment = paymentList[index];
+                        return InkWell(
+                          onTap: () {
+                            return paymentController.setPaymentType(payment.title);
+                          } ,
+                          child: Container(
+                            width: double.maxFinite,
+                            height: Dimensions.height10 * 9,
+                            margin: EdgeInsets.only(bottom: Dimensions.height20),
                             decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(payment.image)
-                              )
+                              borderRadius: BorderRadius.circular(Dimensions.radius20),
+                              color: const Color(0xFFF4F4F4),
+                            ),
+                            child: Center(
+                              child: ListTile(
+                                leading: Container(
+                                  height: Dimensions.height45,
+                                  width: Dimensions.height45,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(payment.image)
+                                    )
+                                  ),
+                                ),
+                                title: Text(
+                                  payment.title,
+                                  style: TextStyle(
+                                    fontSize: Dimensions.fontSize16, 
+                                    fontWeight: FontWeight.w600, 
+                                    height: 1.16,
+                                    fontFamily: 'Jost'
+                                  ),
+                                ),
+                                trailing: Radio(
+                                  activeColor: AppColors.yellow,
+                                  value: payment.title,
+                                  groupValue: title,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      if(value == null) {
+                                        getPayment("Google Play");
+                                      } else {
+                                        title = value;
+                                        setPaymentType(getPayment(value));
+                                      }
+                                    });
+                                  },
+                                ),
+                              ),
                             ),
                           ),
-                          title: Text(
-                            payment.title,
-                            style: TextStyle(
-                              fontSize: Dimensions.fontSize16, 
-                              fontWeight: FontWeight.w600, 
-                              height: 1.16,
-                              fontFamily: 'Jost'
-                            ),
-                          ),
-                          trailing: Radio(
-                            activeColor: AppColors.yellow,
-                            value: payment.title,
-                            groupValue: title,
-                            onChanged: (value) {
-                              setState(() {
-                                if(value == null) {
-                                  getPayment("Google Play");
-                                } else {
-                                  title = value;
-                                  getPayment(value);
-                                }
-                                print(title);
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                        );
+                      }),
                     );
-                  }),
-                )
+                })
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -144,8 +159,8 @@ class _PaymentPageState extends State<PaymentPage> {
         child: InkWell(
           onTap: () {
             Get.offNamed(
-              RouteHelper.getSummaryPage(),
-              arguments: selectedPayment
+              RouteHelper.getSummaryPage(Payment.encode(widget.payment)),
+              arguments: widget.paymentRecord
             );
           },
           child: Container(
