@@ -1,3 +1,4 @@
+import 'package:easyparking/models/parking_record.dart';
 import 'package:easyparking/models/payment.dart';
 import 'package:easyparking/models/payment_record.dart';
 
@@ -23,13 +24,6 @@ class AppConstant{
   static const List<String> carList = ["HILUX" ,"LAMBO", "BUGATTI", "TESLA"];
   static const List<String> carImgList = [CAR_1, CAR_2, CAR_3, CAR_4];
 
-  static const List<String> loactionLogo = [
-    SUNWAY_LOGO,MBPJ_LOGO, MBSJ_LOGO, ONE_U_LOGO, MBPP_LOGO
-  ];
-  static const List<String> locationName = [
-    "Sunway Parking","Petaling Jaya","Subang Jaya","One Utama","Pulau Pinang"
-  ];
-
   static List<Payment> paymentList = [
     Payment(image: GOOGLE_LOGO, title: "Google Pay", selected: false),
     Payment(image: TNG_LOGO, title: "Touch’n GO", selected: false),
@@ -43,6 +37,12 @@ class AppConstant{
     PaymentRecord(logo: MBSJ_LOGO, title: "Subang Jaya", price: "MYR 8.00"),
     PaymentRecord(logo: ONE_U_LOGO, title: "One Utama", price: "MYR 8.00"),
     PaymentRecord(logo: MBPP_LOGO, title: "Pulau Pinang", price: "MYR 8.00")
+  ];
+
+  static List<ParkingRecord> parkingRecordList = [
+    ParkingRecord(image: SUNWAY_LOGO, place: "Sunway Pyramid", subPlace: "7518 Washington Alley", price: 7.34, status: true),
+    ParkingRecord(image: ONE_U_LOGO, place: "One Utama", subPlace: "1st Floor (A05)", price: 3.43, status: true),
+    ParkingRecord(image: MBSJ_LOGO, place: "Subang Jaya", subPlace: "3, Jalan PJS 11/15, Bandar Sunway", price: 5.87, status: true),
   ];
 
   static const String VEHICLE = "vehicle";
