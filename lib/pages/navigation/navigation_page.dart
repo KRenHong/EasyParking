@@ -15,6 +15,14 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
 
   @override
+  void initState() {
+    // TODO: implement initState
+    final applicationBloc = Provider.of<ApplicationBloc>(context, listen: false);
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
 
