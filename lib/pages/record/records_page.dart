@@ -73,55 +73,67 @@ class _RecordPageState extends State<RecordPage> with TickerProviderStateMixin{
                   GetBuilder<RecordController>(builder: (recordController) {
                     recordController.getParkingRecordList();
                     var parkingRecordList = recordController.parkingRecordList;
-                    return SingleChildScrollView(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          bottom: Dimensions.height20,
+                    return parkingRecordList.length > 0? SingleChildScrollView(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            bottom: Dimensions.height20,
+                          ),
+                          child: Column(
+                            children: [
+                              Wrap(
+                                runSpacing: 20,
+                                children: List.generate(parkingRecordList.length, (index) {
+                                  var parkingRecord = parkingRecordList[index];
+                                  return InkWell(
+                                    onTap: () {
+                                      Get.toNamed(
+                                        RouteHelper.getOngoingPage(),
+                                        arguments: parkingRecord
+                                      );
+                                    },
+                                    child: ParkingRecordBox(parkingRecord: parkingRecord)
+                                  );
+                                })
+                              )
+                            ],
+                          ),
                         ),
+                      ): Center(
+                        child: Container(
+                          height: Dimensions.height20 * 15,
+                          width: Dimensions.width20 * 15,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(AppConstant.EMPTY_IMG)
+                            )
+                          ),
+                        ),
+                      );
+                  }),
+                  //Paid tab
+                  GetBuilder<RecordController>(builder: (recordController) {
+                    var doneList = recordController.doneList;
+                    return doneList.length > 0? SingleChildScrollView(
+                      child: Container(
                         child: Column(
                           children: [
                             Wrap(
                               runSpacing: 20,
-                              children: List.generate(parkingRecordList.length, (index) {
-                                var parkingRecord = parkingRecordList[index];
+                              children: List.generate(doneList.length, (index) {
+                                var doneItem = doneList[index];
                                 return InkWell(
                                   onTap: () {
                                     Get.toNamed(
                                       RouteHelper.getOngoingPage(),
-                                      arguments: parkingRecord
+                                      arguments: doneItem
                                     );
                                   },
-                                  child: ParkingRecordBox(parkingRecord: parkingRecord)
+                                  child: ParkingRecordBox(parkingRecord: doneItem)
                                 );
                               })
                             )
                           ],
                         ),
-                      ),
-                    );
-                  }),
-                  //Paid tab
-                  GetBuilder<RecordController>(builder: (recordController) {
-                    var doneList = recordController.doneList;
-                    return doneList.length > 0? Container(
-                      child: Column(
-                        children: [
-                          Wrap(
-                            runSpacing: 20,
-                            children: List.generate(doneList.length, (index) {
-                              var doneItem = doneList[index];
-                              return InkWell(
-                                onTap: () {
-                                  Get.toNamed(
-                                    RouteHelper.getOngoingPage(),
-                                    arguments: doneItem
-                                  );
-                                },
-                                child: ParkingRecordBox(parkingRecord: doneItem)
-                              );
-                            })
-                          )
-                        ],
                       ),
                     ): Center(
                       child: Container(
