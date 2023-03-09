@@ -16,6 +16,7 @@ class InMallParkingPage extends StatefulWidget {
 
 class _InMallParkingPage extends State<InMallParkingPage>
     with TickerProviderStateMixin {
+  bool isParkingSelected = false;
   int selectedTabIndex = 0;
   late TabController tabController;
 
@@ -58,6 +59,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                   child: TabBarView(
                 controller: tabController,
                 children: [
+                  // 1st Floor
                   Container(
                     decoration: const BoxDecoration(
                         image: DecorationImage(
@@ -65,6 +67,41 @@ class _InMallParkingPage extends State<InMallParkingPage>
                                 'assets/image/in-mall-parking.png'))),
                     child: Stack(
                       children: [
+                        Positioned(
+                            left: Dimensions.width30 * 9.1,
+                            top: Dimensions.height30 * 14,
+                            child: GestureDetector(
+                              child: Container(
+                                height: Dimensions.height10 * 4,
+                                width: Dimensions.width10 * 11,
+                                decoration: BoxDecoration(
+                                    color: isParkingSelected == true
+                                        ? AppColors.yellow
+                                        : Colors.amber[50],
+                                    border: Border.all(
+                                        color: AppColors.yellow, width: 1.0),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimensions.radius10)),
+                                child: const Center(
+                                  child: Text(
+                                    'A08',
+                                    style: TextStyle(
+                                        fontFamily: 'Jost',
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  if (isParkingSelected) {
+                                    isParkingSelected = false;
+                                  } else {
+                                    isParkingSelected = true;
+                                  }
+                                });
+                              },
+                            )),
                         Positioned(
                             child: Image.asset('assets/image/Car.png'),
                             left: Dimensions.width10 * 25,
@@ -107,19 +144,97 @@ class _InMallParkingPage extends State<InMallParkingPage>
                       ],
                     ),
                   ),
+                  // 2nd Floor
                   Container(
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
                                 'assets/image/in-mall-parking.png'))),
-                    child: Stack(),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            left: Dimensions.width30 * 9.1,
+                            top: Dimensions.height30 * 14,
+                            child: GestureDetector(
+                              child: Container(
+                                height: Dimensions.height10 * 4,
+                                width: Dimensions.width10 * 11,
+                                decoration: BoxDecoration(
+                                    color: isParkingSelected == true
+                                        ? AppColors.yellow
+                                        : Colors.amber[50],
+                                    border: Border.all(
+                                        color: AppColors.yellow, width: 1.0),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimensions.radius10)),
+                                child: const Center(
+                                  child: Text(
+                                    'A08',
+                                    style: TextStyle(
+                                        fontFamily: 'Jost',
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  if (isParkingSelected) {
+                                    isParkingSelected = false;
+                                  } else {
+                                    isParkingSelected = true;
+                                  }
+                                });
+                              },
+                            )),
+                      ],
+                    ),
                   ),
+                  // 3rd Floor
                   Container(
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
                                 'assets/image/in-mall-parking.png'))),
-                    child: Stack(),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            left: Dimensions.width30 * 9.1,
+                            top: Dimensions.height30 * 14,
+                            child: GestureDetector(
+                              child: Container(
+                                height: Dimensions.height10 * 4,
+                                width: Dimensions.width10 * 11,
+                                decoration: BoxDecoration(
+                                    color: isParkingSelected == true
+                                        ? AppColors.yellow
+                                        : Colors.amber[50],
+                                    border: Border.all(
+                                        color: AppColors.yellow, width: 1.0),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimensions.radius10)),
+                                child: const Center(
+                                  child: Text(
+                                    'A08',
+                                    style: TextStyle(
+                                        fontFamily: 'Jost',
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  if (isParkingSelected) {
+                                    isParkingSelected = false;
+                                  } else {
+                                    isParkingSelected = true;
+                                  }
+                                });
+                              },
+                            )),
+                      ],
+                    ),
                   ),
                 ],
               ))
