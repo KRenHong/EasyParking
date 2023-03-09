@@ -17,6 +17,7 @@ class InMallParkingPage extends StatefulWidget {
 class _InMallParkingPage extends State<InMallParkingPage>
     with TickerProviderStateMixin {
   bool isParkingSelected = false;
+  bool startNavigating = false;
   int selectedTabIndex = 0;
   late TabController tabController;
 
@@ -37,15 +38,15 @@ class _InMallParkingPage extends State<InMallParkingPage>
         backgroundColor: Colors.white,
         body: Container(
             padding: EdgeInsets.only(
-                left: Dimensions.width30,
-                right: Dimensions.width30,
+                left: Dimensions.width10,
+                right: Dimensions.width10,
                 top: Dimensions.height30 * 2 + Dimensions.height10,
                 bottom: Dimensions.height30),
             child: Column(children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Find Parking Spot",
+                  Text("  Find Parking Spot",
                       style: TextStyle(
                           fontFamily: 'Jost',
                           fontSize: Dimensions.fontSize29,
@@ -67,8 +68,22 @@ class _InMallParkingPage extends State<InMallParkingPage>
                                 'assets/image/in-mall-parking.png'))),
                     child: Stack(
                       children: [
+                        Visibility(
+                          visible: startNavigating,
+                          child: Positioned(
+                          left: Dimensions.width30 * 6.3,
+                          top: Dimensions.height30 * 11.5,
+                          child: SvgPicture.asset('assets/image/fake_route.svg'),),
+                         ),
+                        
                         Positioned(
-                            left: Dimensions.width30 * 9.1,
+                            child: Image.asset('assets/image/Car.png'),
+                            left: Dimensions.width20 * .5,
+                            top: Dimensions.height20 * 12,
+                            right: 0.0),
+
+                            Positioned(
+                            left: Dimensions.width30 * 9.8,
                             top: Dimensions.height30 * 14,
                             child: GestureDetector(
                               child: Container(
@@ -94,51 +109,46 @@ class _InMallParkingPage extends State<InMallParkingPage>
                               ),
                               onTap: () {
                                 setState(() {
-                                  if (isParkingSelected) {
-                                    isParkingSelected = false;
-                                  } else {
-                                    isParkingSelected = true;
-                                  }
+                                  isParkingSelected = !isParkingSelected;
+                                  startNavigating = isParkingSelected;
                                 });
                               },
                             )),
-                        Positioned(
-                            child: Image.asset('assets/image/Car.png'),
-                            left: Dimensions.width10 * 25,
-                            bottom: Dimensions.height10 * 10,
-                            top: Dimensions.height10 * 34,
-                            right: 0.0),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Container(
-                                padding: const EdgeInsets.only(
-                                    top: 20.0,
-                                    bottom: 20.0,
-                                    left: 10.0,
-                                    right: 10.0),
-                                color: AppColors.yellow,
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                        'assets/image/arrow_up.svg'),
-                                    SizedBox(
-                                      width: Dimensions.width10,
-                                    ),
-                                    TextButton(
-                                      onPressed: () =>
-                                          _parkSuccessfulDialogBuilder(context),
-                                      child: Text("Move forward 20m",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: 'Jost',
-                                              fontSize: Dimensions.fontSize29,
-                                              fontWeight: FontWeight.w800,
-                                              letterSpacing: 1.0)),
-                                    )
-                                  ],
-                                )),
+                            Visibility(
+                              visible: startNavigating,
+                              child: Container(
+                                  padding: const EdgeInsets.only(
+                                      top: 20.0,
+                                      bottom: 20.0,
+                                      left: 10.0,
+                                      right: 10.0),
+                                  color: AppColors.yellow,
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                          'assets/image/arrow_up.svg'),
+                                      SizedBox(
+                                        width: Dimensions.width10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () =>
+                                            _parkSuccessfulDialogBuilder(
+                                                context),
+                                        child: Text("Move forward 20m",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: 'Jost',
+                                                fontSize: Dimensions.fontSize29,
+                                                fontWeight: FontWeight.w800,
+                                                letterSpacing: 1.0)),
+                                      )
+                                    ],
+                                  )),
+                            )
                           ],
                         )
                       ],
@@ -153,7 +163,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                     child: Stack(
                       children: [
                         Positioned(
-                            left: Dimensions.width30 * 9.1,
+                            left: Dimensions.width30 * 9.8,
                             top: Dimensions.height30 * 14,
                             child: GestureDetector(
                               child: Container(
@@ -179,11 +189,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                               ),
                               onTap: () {
                                 setState(() {
-                                  if (isParkingSelected) {
-                                    isParkingSelected = false;
-                                  } else {
-                                    isParkingSelected = true;
-                                  }
+                                  isParkingSelected = !isParkingSelected;
                                 });
                               },
                             )),
@@ -199,7 +205,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                     child: Stack(
                       children: [
                         Positioned(
-                            left: Dimensions.width30 * 9.1,
+                            left: Dimensions.width30 * 9.8,
                             top: Dimensions.height30 * 14,
                             child: GestureDetector(
                               child: Container(
@@ -225,11 +231,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                               ),
                               onTap: () {
                                 setState(() {
-                                  if (isParkingSelected) {
-                                    isParkingSelected = false;
-                                  } else {
-                                    isParkingSelected = true;
-                                  }
+                                  isParkingSelected = !isParkingSelected;
                                 });
                               },
                             )),
@@ -378,6 +380,10 @@ class _InMallParkingPage extends State<InMallParkingPage>
                 const Divider(height: 40.0, color: AppColors.grey),
                 GestureDetector(
                   onTap: () {
+                    setState(() {
+                      isParkingSelected = false;
+                      startNavigating = false;
+                    });
                     Get.back();
                   },
                   child: Container(
