@@ -2,6 +2,7 @@ import 'package:easyparking/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../utils/colors.dart';
@@ -39,53 +40,74 @@ class _InMallParkingPage extends State<InMallParkingPage>
                 right: Dimensions.width30,
                 top: Dimensions.height30 * 2 + Dimensions.height10,
                 bottom: Dimensions.height30),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Find Parking Spot",
-                        style: TextStyle(
-                            fontFamily: 'Jost',
-                            fontSize: Dimensions.fontSize29,
-                            fontWeight: FontWeight.w600,
-                            height: 1.16))
-                  ],
-                ),
-                SizedBox(height: Dimensions.height30),
-                tabbar(),
-                Expanded(child: TabBarView(
-                  controller: tabController,
-                  children: [
-                    // 1st Floor
-                    Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/image/in_mall_parking.png')
-                        )
-                      )
-                    ),
-                    // 2nd Floor
-                    Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/image/in_mall_parking.png')
-                        )
-                      )
-                    ),
-                    // 3rd Floor
-                    Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/image/in_mall_parking.png')
-                        )
-                      )
-                    )
-                  ],
-                  
-                ))
-              ],
-            )));
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Find Parking Spot",
+                      style: TextStyle(
+                          fontFamily: 'Jost',
+                          fontSize: Dimensions.fontSize29,
+                          fontWeight: FontWeight.w600,
+                          height: 1.16))
+                ],
+              ),
+              SizedBox(height: Dimensions.height30),
+              tabbar(),
+              Expanded(child: TabBarView(
+                controller: tabController,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
+                    child: Stack(children: [
+                      Positioned(child: Image.asset('assets/image/Car.png'),
+                      left: Dimensions.width10 * 25,
+                      bottom: Dimensions.height10 * 10,
+                      top: Dimensions.height10 * 34,
+                      right: 0.0),
+
+                      Column(mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(
+                              top: 20.0,
+                              bottom: 20.0,
+                              left: 10.0,
+                              right: 10.0
+                            ),
+                            color: AppColors.yellow, 
+                            
+                            child: Row(
+                              children: [
+                                SvgPicture.asset('assets/image/arrow_up.svg'),
+                                SizedBox(width: Dimensions.width10,),
+                                TextButton(
+                                  onPressed: () {  },
+                                child: Text("Move forward 20m", 
+                                  style: TextStyle(color: Colors.white,
+                                  fontFamily: 'Jost',
+                                  fontSize: Dimensions.fontSize29,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 1.0)),
+                                
+                                )
+                              ],
+                            )
+                          ),
+                        ],)
+                    ],),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
+                    child: Stack(),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
+                    child: Stack(),
+                  ),
+                ],))
+            ])));
   }
 
   Widget tabbar() => TabBar(
@@ -108,8 +130,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                         color: selectedTabIndex == 0
                             ? Colors.white
                             : AppColors.yellow,
-                        width: 2)
-                      ),
+                        width: 2)),
                 child: Center(
                     child: Text(
                   "1st Floor",
