@@ -54,59 +54,75 @@ class _InMallParkingPage extends State<InMallParkingPage>
               ),
               SizedBox(height: Dimensions.height30),
               tabbar(),
-              Expanded(child: TabBarView(
+              Expanded(
+                  child: TabBarView(
                 controller: tabController,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
-                    child: Stack(children: [
-                      Positioned(child: Image.asset('assets/image/Car.png'),
-                      left: Dimensions.width10 * 25,
-                      bottom: Dimensions.height10 * 10,
-                      top: Dimensions.height10 * 34,
-                      right: 0.0),
-
-                      Column(mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(
-                              top: 20.0,
-                              bottom: 20.0,
-                              left: 10.0,
-                              right: 10.0
-                            ),
-                            color: AppColors.yellow, 
-                            
-                            child: Row(
-                              children: [
-                                SvgPicture.asset('assets/image/arrow_up.svg'),
-                                SizedBox(width: Dimensions.width10,),
-                                TextButton(
-                                  onPressed: () {  },
-                                child: Text("Move forward 20m", 
-                                  style: TextStyle(color: Colors.white,
-                                  fontFamily: 'Jost',
-                                  fontSize: Dimensions.fontSize29,
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: 1.0)),
-                                
-                                )
-                              ],
-                            )
-                          ),
-                        ],)
-                    ],),
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                'assets/image/in-mall-parking.png'))),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            child: Image.asset('assets/image/Car.png'),
+                            left: Dimensions.width10 * 25,
+                            bottom: Dimensions.height10 * 10,
+                            top: Dimensions.height10 * 34,
+                            right: 0.0),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Container(
+                                padding: const EdgeInsets.only(
+                                    top: 20.0,
+                                    bottom: 20.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                color: AppColors.yellow,
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                        'assets/image/arrow_up.svg'),
+                                    SizedBox(
+                                      width: Dimensions.width10,
+                                    ),
+                                    TextButton(
+                                      onPressed: () =>
+                                          _parkSuccessfulDialogBuilder(context),
+                                      child: Text("Move forward 20m",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'Jost',
+                                              fontSize: Dimensions.fontSize29,
+                                              fontWeight: FontWeight.w800,
+                                              letterSpacing: 1.0)),
+                                    )
+                                  ],
+                                )),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                   Container(
-                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                'assets/image/in-mall-parking.png'))),
                     child: Stack(),
                   ),
                   Container(
-                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/in-mall-parking.png'))),
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                'assets/image/in-mall-parking.png'))),
                     child: Stack(),
                   ),
-                ],))
+                ],
+              ))
             ])));
   }
 
@@ -186,4 +202,89 @@ class _InMallParkingPage extends State<InMallParkingPage>
                       fontSize: Dimensions.fontSize16),
                 ))),
           ]);
+
+  Future<void> _parkSuccessfulDialogBuilder(BuildContext context) async {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+              child: Container(
+            padding: EdgeInsets.all(20.0),
+            width: double.maxFinite,
+            height: Dimensions.height20 * 24,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'Park Successfully',
+                  style: TextStyle(
+                      fontFamily: 'Jost',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold),
+                ),
+                const Divider(height: 20.0, color: AppColors.grey),
+                const Text('Your car is parked at:',
+                    style: TextStyle(
+                        fontFamily: 'Jost',
+                        fontSize: 14.0,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.2)),
+                const SizedBox(height: 10.0),
+                const Text('A08, First Floor',
+                    style: TextStyle(
+                        fontFamily: 'Jost',
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.w800)),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const Image(image: AssetImage('assets/image/sunway_logo.png')),
+                const SizedBox(height: 20.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text('Car plate',
+                        style: TextStyle(
+                            fontFamily: 'Jost',
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2)),
+                    Text('PKR 6969',
+                        style: TextStyle(
+                            fontFamily: 'Jost',
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2))
+                  ],
+                ),
+                const Divider(height: 40.0, color: AppColors.grey),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
+                    width: double.maxFinite,
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius15),
+                        color: AppColors.yellow),
+                    child: const Center(
+                      child: Text('Close',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Jost',
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w800)),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ));
+        });
+  }
 }
