@@ -2,6 +2,7 @@ import 'package:easyparking/models/parking_record.dart';
 import 'package:easyparking/models/payment.dart';
 import 'package:easyparking/models/payment_record.dart';
 import 'package:easyparking/pages/home/home_page.dart';
+import 'package:easyparking/pages/navigation/in_mall_parking_page.dart';
 import 'package:easyparking/pages/payment/history_page.dart';
 import 'package:easyparking/pages/payment/payment_page.dart';
 import 'package:easyparking/pages/payment/summary_page.dart';
@@ -21,6 +22,7 @@ class RouteHelper{
   static const String registeredVehiclePage = "/registered-vehicle-page";
   static const String addVehiclePage = "/add-vehicle-page";
   static const String ongoingPage = "/ongoing-page";
+  static const String inMarkParkingPage = "/in-mark-parking-page";
 
   static getHomePage() => homePage;
   static getHistoryPage() => historyPage;
@@ -30,6 +32,7 @@ class RouteHelper{
   static getRegisteredVehiclePage() => registeredVehiclePage;
   static getAddVehiclePage() => addVehiclePage;
   static getOngoingPage() => ongoingPage;
+  static getInMarkParkingPage() => inMarkParkingPage;
 
   static List<GetPage> routes = [
     //Profile page route
@@ -43,6 +46,9 @@ class RouteHelper{
 
     //History page route
     GetPage(name: historyPage, page: () => const HistoryPage()),
+
+    //InMarkParking page route
+    GetPage(name: inMarkParkingPage, page: () => const InMallParkingPage()),
 
     //Payment page route
     GetPage(name: paymentPage, page: () {
