@@ -1,6 +1,8 @@
 import 'package:easyparking/pages/navigation/blocs/application_bloc.dart';
 import 'package:easyparking/pages/navigation/models/place.dart';
+import 'package:easyparking/routes/route_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -103,30 +105,39 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking1'),
                                       position: LatLng(3.0738, 101.5183),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking2'),
                                       position: LatLng(3.0400342456486484, 101.57986118588914),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking3'),
                                       position: LatLng(3.041470810386873, 101.58054291955547),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking4'),
                                       position: LatLng(3.0487989720873734, 101.5777534221093),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking5'),
                                       position: LatLng(3.0546057548451553, 101.59468352583382),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -134,6 +145,8 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking6'),
                                       position: LatLng(3.053962939111916, 101.57871901737263),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -141,6 +154,8 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking7'),
                                       position: LatLng(3.046270547674886, 101.57968461264247),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -148,6 +163,8 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking8'),
                                       position: LatLng(3.0444063665408168, 101.59706532749938),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -155,6 +172,8 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking9'),
                                       position: LatLng(3.0412779633666167, 101.59258067391285),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -162,6 +181,8 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking10'),
                                       position: LatLng(3.0663729271715154, 101.58763874767999),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
 
@@ -169,30 +190,40 @@ class _NavigationPageState extends State<NavigationPage> {
                                       markerId: MarkerId('parking11'),
                                       position: LatLng(3.0400342456486484, 101.57986118588914),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking12'),
                                       position: LatLng(3.0686192357061466, 101.57849311023784),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking13'),
                                       position: LatLng(3.064458037482437, 101.60460243003234),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking14'),
                                       position: LatLng(3.070718241053567, 101.60297981693778),
                                       infoWindow: InfoWindow(title: 'Arena MBSJ'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
 
                                     Marker(
                                       markerId: MarkerId('parking15'),
                                       position: LatLng(3.0731, 101.6071),
                                       infoWindow: InfoWindow(title: 'Parking 2'),
+                                      onTap: () => Get.toNamed(RouteHelper.getInMarkParkingPage()),
+
                                     ),
                                   ]),
 

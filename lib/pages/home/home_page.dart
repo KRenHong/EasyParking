@@ -48,8 +48,8 @@ class _HomePageState extends State<HomePage> {
         onTap: onTapNav,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "Home"
+            icon: Icon(Icons.gps_fixed),
+            label: "Navigation"
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),
