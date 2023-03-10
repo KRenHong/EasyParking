@@ -38,14 +38,17 @@ class _InMallParkingPage extends State<InMallParkingPage>
         backgroundColor: Colors.white,
         body: Container(
             padding: EdgeInsets.only(
-                left: Dimensions.width10,
-                right: Dimensions.width10,
+                left: Dimensions.width30,
+                right: Dimensions.width30,
                 top: Dimensions.height30 * 2 + Dimensions.height10,
                 bottom: Dimensions.height30),
             child: Column(children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  InkWell(
+                    onTap: () => Get.back(),
+                    child: const Icon(Icons.arrow_back)
+                  ),
                   Text("  Find Parking Spot",
                       style: TextStyle(
                           fontFamily: 'Jost',
@@ -64,6 +67,7 @@ class _InMallParkingPage extends State<InMallParkingPage>
                   Container(
                     decoration: const BoxDecoration(
                         image: DecorationImage(
+                          // fit: BoxFit.cover,
                             image: AssetImage(
                                 'assets/image/in-mall-parking.png'))),
                     child: Stack(
@@ -71,20 +75,19 @@ class _InMallParkingPage extends State<InMallParkingPage>
                         Visibility(
                           visible: startNavigating,
                           child: Positioned(
-                          left: Dimensions.width30 * 6.3,
+                          left: Dimensions.width30 * 4,
                           top: Dimensions.height30 * 11.5,
                           child: SvgPicture.asset('assets/image/fake_route.svg'),),
                          ),
                         
                         Positioned(
                             child: Image.asset('assets/image/Car.png'),
-                            left: Dimensions.width20 * .5,
-                            top: Dimensions.height20 * 12,
-                            right: 0.0),
+                            left: Dimensions.width10 * 5,
+                            top: Dimensions.height20 * 16 + Dimensions.height10,),
 
                             Positioned(
-                            left: Dimensions.width30 * 9.8,
-                            top: Dimensions.height30 * 14,
+                            left: Dimensions.width30 * 8.6,
+                            top: Dimensions.height30 * 13 + Dimensions.height10,
                             child: GestureDetector(
                               child: Container(
                                 height: Dimensions.height10 * 4,
