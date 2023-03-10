@@ -1,5 +1,6 @@
+import 'package:easyparking/pages/navigation/in_mall_parking_page.dart';
 import 'package:easyparking/pages/navigation/navigation_page.dart';
-import 'package:easyparking/pages/payment/payment_page.dart';
+import 'package:easyparking/pages/payment/history_page.dart';
 import 'package:easyparking/pages/record/records_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,9 +21,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   List pages = [
-    const NavigationPage(),
+    const InMallParkingPage(),
     const RecordPage(),
-    const PaymentPage(),
+    const HistoryPage(),
     const ProfilePage()
   ];
 
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             label: "Home"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.folder),
+            icon: Icon(Icons.book_outlined),
             label: "Records"
           ),
           BottomNavigationBarItem(
