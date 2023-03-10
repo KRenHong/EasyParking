@@ -1,6 +1,8 @@
+import 'package:easyparking/pages/navigation/blocs/application_bloc.dart';
 import 'package:easyparking/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'helper/dependencies.dart' as dep;
 
 Future<void> main() async{
@@ -16,11 +18,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Easy Parking',
-      initialRoute: RouteHelper.getHomePage(),
-      getPages: RouteHelper.routes,
+    return ChangeNotifierProvider(
+      create: (context) => ApplicationBloc(),
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Easy Parking',
+        initialRoute: RouteHelper.getHomePage(),
+        getPages: RouteHelper.routes,
+      ),
     );
   }
 }
