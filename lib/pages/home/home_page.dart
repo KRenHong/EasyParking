@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   List pages = [
-    const InMallParkingPage(),
+    const NavigationPage(),
     const RecordPage(),
     const HistoryPage(),
     const ProfilePage()
